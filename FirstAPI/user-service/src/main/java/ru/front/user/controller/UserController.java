@@ -17,24 +17,31 @@ public class UserController {
         return userService.findAllUser();
     };
 
-    @PostMapping("save_user")
-    public User saveUser(@RequestBody User user){
-
-        return userService.saveUser(user);
-    }
-
     @GetMapping("/{login}")
     public User findByLogin(@PathVariable String login){
         return userService.findByLogin(login);
     }
 
+    @PostMapping("save_user")
+    public String saveUser(@RequestBody User user){
+        User userNow = userService.saveUser(user);
+        return "Пользователь добавлен";
+    }
+
     @PutMapping("update_user")
-    public User updateUser(@RequestBody User user){
-        return userService.updateUser(user);
+    public String updateUser(@RequestBody User user){
+        User userNow = userService.updateUser(user);
+        return "Пользователь обновлен";
+    }
+
+    @PutMapping("block_user/{login}")
+    public String blockUser(@PathVariable String login){
+        return userService.changeBlockUser(login);
     }
 
     @DeleteMapping("delete_user/{login}")
-    public void deleteUser(@PathVariable String login){
+    public String deleteUser(@PathVariable String login){
         userService.deleteUser(login);
+        return "Пользователь удален";
     }
 }

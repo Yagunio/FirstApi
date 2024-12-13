@@ -13,4 +13,6 @@ public interface UserService {
     public User updateUser(User user);
 
     public void deleteUser(String login);
+
+    public String changeBlockUser(String login);
 }

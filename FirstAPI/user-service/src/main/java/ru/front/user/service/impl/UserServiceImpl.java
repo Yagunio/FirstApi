@@ -12,7 +12,6 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-@Primary
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
@@ -41,5 +40,13 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void deleteUser(String login) {
         repository.deleteByLogin(login);
+    }
+
+    @Override
+    public String changeBlockUser(String login) {
+        User userNow = findByLogin(login);
+        userNow.setIsBlock(!userNow.getIsBlock());
+        updateUser(userNow);
+        return "Пользователь " + login + ((userNow.getIsBlock()) ? " заблокирован" : " разблокирован");
     }
 }

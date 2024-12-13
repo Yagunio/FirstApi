@@ -18,7 +18,7 @@ public class User {
     @Column(unique = true)
     private String login;
     private String password;
-    private String role;
-    @Transient
     private Boolean isBlock;
+    @ManyToOne
+    private Role role;
 }

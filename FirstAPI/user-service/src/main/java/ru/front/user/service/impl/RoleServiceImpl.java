@@ -1,11 +1,18 @@
 package ru.front.user.service.impl;
 
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 import ru.front.user.model.Role;
+import ru.front.user.repository.RoleRepository;
+import ru.front.user.repository.UserRepository;
 import ru.front.user.service.RoleService;
 
 import java.util.List;
 
+@Service
+@AllArgsConstructor
 public class RoleServiceImpl implements RoleService {
+    private final RoleRepository repository;
     @Override
     public List<Role> findAllRole() {
         return null;

@@ -1,8 +1,6 @@
 package ru.front.user.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,6 +10,7 @@ public class Role {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(unique = true)
     private String name;
 
     private String description;
