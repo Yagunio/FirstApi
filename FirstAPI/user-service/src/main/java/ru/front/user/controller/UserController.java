@@ -2,6 +2,7 @@ package ru.front.user.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.front.user.model.Role;
 import ru.front.user.model.User;
 import ru.front.user.service.UserService;
 
@@ -30,6 +31,7 @@ public class UserController {
 
     @PutMapping("update_user")
     public String updateUser(@RequestBody User user){
+        System.out.println(user.getRole().toString());
         User userNow = userService.updateUser(user);
         return "Пользователь обновлен";
     }

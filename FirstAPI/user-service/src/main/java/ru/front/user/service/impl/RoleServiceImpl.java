@@ -15,7 +15,7 @@ public class RoleServiceImpl implements RoleService {
     private final RoleRepository repository;
     @Override
     public List<Role> findAllRole() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
@@ -25,7 +25,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role saveRole(Role role) {
-        return null;
+        return repository.save(role);
     }
 
     @Override

@@ -7,6 +7,6 @@ import ru.front.user.model.User;
 public interface RoleRepository extends JpaRepository<Role, Long> {
     void deleteByName(String name);
 
-    User findByName(String name);
+    Role findByName(String name);
 
 }
