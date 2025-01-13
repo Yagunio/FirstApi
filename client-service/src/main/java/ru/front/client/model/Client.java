@@ -13,24 +13,17 @@ public class Client {
     @GeneratedValue
     Long id;
 
-    String firstName;
+    String firstname;
 
-    String secondName;
+    String secondname;
 
-    String lastName;
+    String lastname;
 
     Date birthday;
 
     String address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "passport_id")
     Passport passport;
-
-    @Transient
-    private String fullName;
-
-    public String getFullName(){
-        return lastName + ' ' + firstName + ' ' + secondName;
-    }
 }

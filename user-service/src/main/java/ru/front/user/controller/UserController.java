@@ -29,29 +29,13 @@ public class UserController {
 
     @PostMapping("save_user")
     public String saveUser(@RequestBody User user){
-        Role role = user.getRole();
-        if (role == null)
-            return "Укажите роль пользователя";
-        String roleName = role.getName();
-        if (roleName.isEmpty())
-            return "Укажите наименование роли пользователя";
-
-        user.setRole(roleService.findByName(roleName));
-        User userNow = userService.saveUser(user);
+        userService.saveUser(user);
         return "Пользователь добавлен";
     }
 
     @PutMapping("update_user")
     public String updateUser(@RequestBody User user){
-        Role role = user.getRole();
-        if (role == null)
-            return "Укажите роль пользователя";
-        String roleName = role.getName();
-        if (roleName.isEmpty())
-            return "Укажите наименование роли пользователя";
-
-        user.setRole(roleService.findByName(roleName));
-        User userNow = userService.updateUser(user);
+        userService.updateUser(user);
         return "Пользователь обновлен";
     }
 
