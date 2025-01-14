@@ -5,6 +5,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.front.user.model.Role;
 import ru.front.user.model.User;
+import ru.front.user.model.UserDto;
 import ru.front.user.service.RoleService;
 import ru.front.user.service.UserService;
 
@@ -15,7 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 public class UserController {
     private UserService userService;
-    private RoleService roleService;
 
     @GetMapping
     public List<User> findAllUser(){
@@ -23,8 +23,12 @@ public class UserController {
     };
 
     @GetMapping("/{login}")
-    public User findByLogin(@PathVariable String login){
-        return userService.findByLogin(login);
+    public UserDto findByLogin(@PathVariable String login){
+        User user = userService.findByLogin(login);
+        if (user.getIsBlock()){
+            return null;
+        }
+        return userService.convertToUserDto(user);
     }
 
     @PostMapping("save_user")

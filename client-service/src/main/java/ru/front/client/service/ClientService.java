@@ -2,6 +2,7 @@ package ru.front.client.service;
 
 import org.springframework.stereotype.Service;
 import ru.front.client.model.Client;
+import ru.front.client.model.ClientDto;
 import ru.front.client.model.Passport;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface ClientService {
     public Client updateClient(Client client);
 
     public void deleteClient(Long id);
+
+    public ClientDto convertToClientDto(Client client);
 }

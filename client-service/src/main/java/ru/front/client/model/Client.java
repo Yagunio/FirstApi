@@ -11,19 +11,13 @@ import java.util.Date;
 public class Client {
     @Id
     @GeneratedValue
-    Long id;
-
-    String firstname;
-
-    String secondname;
-
-    String lastname;
-
-    Date birthday;
-
-    String address;
-
+    private Long id;
+    private String firstname;
+    private String secondname;
+    private String lastname;
+    private Date birthday;
+    private String address;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "passport_id")
-    Passport passport;
+    private Passport passport;
 }

@@ -3,6 +3,7 @@ package ru.front.client.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.front.client.model.Client;
+import ru.front.client.model.ClientDto;
 import ru.front.client.service.ClientService;
 
 import java.util.List;
@@ -24,8 +25,9 @@ public class ClientController {
     }
 
     @GetMapping("/{serial}/{number}")
-    public Client findClientByPassportSerialAndNumber(@PathVariable String serial, @PathVariable String number) {
-        return clientService.findClientByPassportSerialAndNumber(serial, number);
+    public ClientDto findClientByPassportSerialAndNumber(@PathVariable String serial, @PathVariable String number) {
+        Client client = clientService.findClientByPassportSerialAndNumber(serial, number);
+        return clientService.convertToClientDto(client);
     }
 
     @PostMapping("save_client")

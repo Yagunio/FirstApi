@@ -7,15 +7,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
-@Entity
-@Table(name = "passport")
-public class Passport {
-
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public class PassportDto {
     private String serial;
-
     private String number;
 }
