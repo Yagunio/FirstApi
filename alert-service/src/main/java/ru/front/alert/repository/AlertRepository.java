@@ -9,4 +9,6 @@ public interface AlertRepository extends JpaRepository<Alert, Long> {
     List<Alert> findAll();
 
     List<Alert> findByClientId(Long clientId);
+
+    Alert findAlertById(Long id);
 }

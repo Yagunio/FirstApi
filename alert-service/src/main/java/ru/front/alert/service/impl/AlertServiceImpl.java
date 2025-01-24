@@ -3,10 +3,12 @@ package ru.front.alert.service.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.front.alert.model.Alert;
+import ru.front.alert.model.ReactionType;
 import ru.front.alert.repository.AlertRepository;
 import ru.front.alert.service.AlertService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -27,13 +29,20 @@ public class AlertServiceImpl implements AlertService {
     @Override
     public List<Alert> findByClientIdAndNotReaction(Long clientId) {
         List<Alert> alertList = alertRepository.findByClientId(clientId);
-        return alertList.stream().
-                filter(x -> x.getReaction() == null).
-                toList();
+        return alertList.stream()
+                .filter(x -> x.getReaction() == null || x.getReaction().equals(""))
+                .toList();
     }
 
     @Override
     public Alert saveAlert(Alert alert) {
         return alertRepository.save(alert);
+    }
+
+    public Alert setReaction(Long alertId, String reaction){
+        Alert alert = alertRepository.findAlertById(alertId);
+        alert.setReaction(reaction);
+        alertRepository.save(alert);
+        return alert;
     }
 }

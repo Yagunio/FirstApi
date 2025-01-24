@@ -12,5 +12,7 @@ public class Alert {
 
     private Long clientId;
     private String text;
+    //@Enumerated(EnumType.STRING)
+    //private ReactionType reaction;
     private String reaction;
 }

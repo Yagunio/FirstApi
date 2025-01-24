@@ -2,6 +2,7 @@ package ru.front.alert.service;
 
 import org.springframework.stereotype.Service;
 import ru.front.alert.model.Alert;
+import ru.front.alert.model.ReactionType;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface AlertService {
 
     Alert saveAlert(Alert alert);
 
-
+    public Alert setReaction(Long alertId, String reaction);
 }
