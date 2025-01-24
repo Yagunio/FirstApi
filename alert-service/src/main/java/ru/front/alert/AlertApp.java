@@ -9,4 +9,7 @@ public class AlertApp {
     public static void main(String[] args) {
         SpringApplication.run(AlertApp.class, args);
     }
+
+    public static class AlertRepository {
+    }
 }
