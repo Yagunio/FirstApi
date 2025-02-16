@@ -1,0 +1,38 @@
+server:
+  port: 8084
+
+user:
+  service:
+    url: http://localhost:8080/api/users
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - StripPrefix=1
+
+        - id: client-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/clients/**
+          filters:
+            - StripPrefix=1
+
+        - id: product-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/products/**
+          filters:
+            - StripPrefix=1
+
+        - id: alert-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/alerts/**
+          filters:
+            - StripPrefix=1

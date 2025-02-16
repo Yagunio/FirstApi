@@ -1,12 +1,9 @@
 package ru.front.user.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.front.user.model.Role;
 import ru.front.user.model.User;
 import ru.front.user.model.UserDto;
-import ru.front.user.service.RoleService;
 import ru.front.user.service.UserService;
 
 import java.util.List;

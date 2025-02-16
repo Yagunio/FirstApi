@@ -1,8 +1,6 @@
 package ru.front.product.service.impl;
 
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import ru.front.product.service.ClientService;

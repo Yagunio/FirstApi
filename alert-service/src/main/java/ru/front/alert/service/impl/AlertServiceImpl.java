@@ -3,12 +3,10 @@ package ru.front.alert.service.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.front.alert.model.Alert;
-import ru.front.alert.model.ReactionType;
 import ru.front.alert.repository.AlertRepository;
 import ru.front.alert.service.AlertService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
