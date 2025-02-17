@@ -35,6 +35,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByLoginAndPassword(String login, String password) { return repository.findByLoginAndPassword(login, password); }
+
+    @Override
     @Transactional
     public User saveUser(User user) {
         return repository.save(user);

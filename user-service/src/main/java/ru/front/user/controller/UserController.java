@@ -28,6 +28,15 @@ public class UserController {
         return userService.convertToUserDto(user);
     }
 
+    @GetMapping("/{login}/{password}")
+    public UserDto findByLoginAndPassword(@PathVariable String login, @PathVariable String password){
+        User user = userService.findByLogin(login);
+        if (user.getIsBlock()){
+            return null;
+        }
+        return userService.convertToUserDto(user);
+    }
+
     @PostMapping("save_user")
     public String saveUser(@RequestBody User user){
         userService.saveUser(user);

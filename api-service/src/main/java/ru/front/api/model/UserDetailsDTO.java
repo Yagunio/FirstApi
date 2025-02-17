@@ -25,6 +25,14 @@ public class UserDetailsDTO implements UserDetails {
         return login;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUsername(String login) {
+        this.login = login;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return UserDetails.super.isAccountNonExpired();

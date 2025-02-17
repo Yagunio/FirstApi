@@ -10,6 +10,7 @@ import java.util.List;
 public interface UserService {
     public List<User> findAllUser();
     public User findByLogin(String login);
+    public User findByLoginAndPassword(String login, String password);
     public User saveUser(User user);
     public User updateUser(User user);
 

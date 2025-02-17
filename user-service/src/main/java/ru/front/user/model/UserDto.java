@@ -8,4 +8,5 @@ public class UserDto {
     private String fio;
     private String login;
     private RoleDto role;
+    private String password;
 }
