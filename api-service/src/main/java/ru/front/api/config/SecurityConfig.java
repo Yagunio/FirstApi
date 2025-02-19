@@ -15,14 +15,13 @@ import ru.front.api.service.UserService;
 @EnableWebSecurity
 @Data
 public class SecurityConfig {
-
     private final UserService userService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll() // Разрешаем доступ к эндпоинтам авторизации
+                        .requestMatchers("/api/v1/auth/**").permitAll() // Разрешаем доступ к эндпоинтам авторизации
                         .anyRequest().authenticated() // Все остальные запросы требуют авторизации
                 )
                 .userDetailsService(userService)

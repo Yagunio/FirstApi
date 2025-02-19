@@ -26,16 +26,19 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         String url = userServiceUrl + "/" + username;
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+        System.out.println(response.getBody());
         if (response.getStatusCode() != HttpStatus.OK || response.getBody() == null) {
             throw new UsernameNotFoundException("Пользователь не найден: " + username);
         }
-
+        System.out.println("2");
         ObjectMapper mapper = new ObjectMapper();
         try {
             JsonNode root = mapper.readTree(response.getBody());
+            System.out.println("3");
             UserDetailsDTO userDetails = new UserDetailsDTO();
             userDetails.setUsername(root.path("login").asText());
             userDetails.setPassword(root.path("password").asText());
+            System.out.println(userDetails.getUsername());
             return userDetails;
         } catch (IOException e) {
             throw new RuntimeException("Ошибка при преобразовании JSON", e);

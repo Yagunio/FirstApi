@@ -1,18 +1,19 @@
 package ru.front.api.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.*;
 import ru.front.api.service.UserService;
 
 @RestController
-@RequestMapping("api/auth")
+@RequestMapping("api/v1/auth")
+@AllArgsConstructor
 public class AuthController {
-
     UserService userService;
 
-    @PostMapping("/login")
-    public String login(String login){
-        return "Авторизация прошла успешно";
+    @GetMapping("/login/{login}")
+    public UserDetails login(@PathVariable String login){
+        System.out.println('1');
+        return userService.loadUserByUsername(login);
     }
 }
