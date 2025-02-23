@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("api/proxy")
 @AllArgsConstructor
 public class ProxyController {
-    private RestTemplate restTemplate;
+    RestTemplate restTemplate;
     private final String urlUsers = "http://localhost:8080/api/v1/users";
     private final String urlClients = "http://localhost:8081/api/v1/clients";
     private final String urlProducts = "http://localhost:8082/api/v1/products";
@@ -20,6 +20,7 @@ public class ProxyController {
 
     @GetMapping("/users/{proxy}")
     public ResponseEntity<String> proxyToUserService(@PathVariable String proxy) {
+        System.out.println(1);
         String url = urlUsers + proxy;
         return restTemplate.getForEntity(url, String.class);
     }

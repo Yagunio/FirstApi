@@ -13,7 +13,6 @@ public class AuthController {
 
     @GetMapping("/login/{login}")
     public UserDetails login(@PathVariable String login){
-        System.out.println('1');
         return userService.loadUserByUsername(login);
     }
 }
